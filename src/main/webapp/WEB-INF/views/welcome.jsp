@@ -40,6 +40,10 @@
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
+
+        <form id="updateForm" method="GET" action="${contextPath}/update">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
         <div class="inner-data">
             <h2 >Welcome ${pageContext.request.userPrincipal.name}!! </h2>
             <c:choose>
@@ -55,7 +59,7 @@
                 </c:otherwise>
             </c:choose>
             <a class="btn btn-sm btn-danger" onclick="document.forms['logoutForm'].submit()">Logout</a>
-            <a class="btn btn-sm btn-success" id="editForm">Edit</a>
+            <a class="btn btn-sm btn-success" onclick="document.forms['updateForm'].submit()">Edit</a>
         </div>
     </c:if>
 

@@ -37,27 +37,60 @@
 <body>
 
 <div class="container">
-
     <form:form method="POST" modelAttribute="updateForm" class="form-signin">
         <h2 class="form-signin-heading">Update your account ${pageContext.request.userPrincipal.name}</h2>
+        <spring:bind path="username">
+            <form:input type="hidden"  path="username" value="${pageContext.request.userPrincipal.name}"></form:input>
+        </spring:bind>
+
         <spring:bind path="phone">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="phone" class="form-control"
-                            placeholder="Enter Phone"></form:input>
+                <form:input type="text" path="phone" class="form-control" placeholder="Enter Phone"></form:input>
                 <form:errors path="phone"></form:errors>
             </div>
         </spring:bind>
 
         <spring:bind path="email">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control"
-                            placeholder="Enter Email"></form:input>
+                <form:input type="text" path="email" class="form-control" placeholder="Enter Email"></form:input>
                 <form:errors path="email"></form:errors>
             </div>
         </spring:bind>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
     </form:form>
+
+    <%--<c:choose>
+        <c:when test="${pageContext.request.userPrincipal.name != null}">
+            <form:form method="POST" modelAttribute="updateForm" class="form-signin">
+                <h2 class="form-signin-heading">Update your account ${pageContext.request.userPrincipal.name}</h2>
+                <spring:bind path="username">
+                    <form:input type="hidden"  path="username" value="${pageContext.request.userPrincipal.name}"></form:input>
+                </spring:bind>
+
+                <spring:bind path="phone">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:input type="text" path="phone" class="form-control" placeholder="Enter Phone"></form:input>
+                        <form:errors path="phone"></form:errors>
+                    </div>
+                </spring:bind>
+
+                <spring:bind path="email">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:input type="text" path="email" class="form-control" placeholder="Enter Email"></form:input>
+                        <form:errors path="email"></form:errors>
+                    </div>
+                </spring:bind>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+            </form:form>
+        </c:when>
+        <c:otherwise>
+            <h1>HTTP Status 403 - Access is denied</h1>
+            <h2> You do not have permission to access this page!</h2>
+        </c:otherwise>
+    </c:choose>--%>
+
 
 </div>
 <!-- /container -->
