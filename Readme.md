@@ -6,7 +6,7 @@ Requirements.
   - tomcat server 8.5
   - mysql 5.1
 
- ```sh
+ ```
 $ git clone git@github.com:rohit-raj/letMeInn.git
 ```
 Steps to follow:
