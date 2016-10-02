@@ -102,6 +102,12 @@ public class UserController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loggedInUser = auth.getName();
+        User user = userService.findByUsername(loggedInUser);
+        if(user == null){
+            return "login";
+        }
         model.addAttribute("updateForm", new User());
 
         return "update";
